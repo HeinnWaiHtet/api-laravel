@@ -1,4 +1,5 @@
 import 'package:api/auth/login_status.dart';
+import 'package:api/ui/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Laravel API',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: const MyHomePage(title: 'Laravel API'),
     );
@@ -44,13 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     bool loginstatus = Provider.of<LoginStatus>(context).status;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: (loginstatus)
-        ? Container(
-          child: Text("Login"),
-        ) 
+        ? LoginScreen() 
         : Container(
           child: Text("Register"),
         ),
