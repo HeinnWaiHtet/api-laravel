@@ -1,16 +1,17 @@
-import 'package:api/ui/register_screen.dart';
+import 'package:api/ui/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     final key = GlobalKey<FormState>();
+    TextEditingController nameController = TextEditingController();
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
 
@@ -31,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   Center(
                     child: Text(
-                      "Login",
+                      "Register",
                       style: TextStyle(
                         fontSize: 40,
                         color: Colors.white
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   Center(
                     child: Text(
-                      "Please Login!",
+                      "Please Register New Account!",
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.white
@@ -84,6 +85,31 @@ class _LoginScreenState extends State<LoginScreen> {
                                 key: key,
                                 child: Column(
                                   children: [
+
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        border: Border(
+                                          bottom: BorderSide(width: 2, color: Colors.red),
+                                        ),
+                                      ),
+                                      child: TextFormField(
+                                        controller: nameController,
+                                        validator: (value){
+                                          if(value == null || value.isEmpty){
+                                            return "Name Must Not Be Empty";
+                                          }
+                                        },
+                                        decoration: InputDecoration(
+                                          hintText: "Enter Your Name",
+                                          hintStyle: TextStyle(
+                                            color: Colors.grey
+                                          ),
+                                          border: InputBorder.none,
+                                        ),
+                                      ),
+                                    ),
+
                                     Container(
                                       padding: EdgeInsets.all(10),
                                       decoration: BoxDecoration(
@@ -143,15 +169,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onPressed: (){
                                   Navigator.pushReplacement(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context){
-                                        return RegisterScreen();
-                                      }
-                                    )
+                                    MaterialPageRoute(builder: (context){
+                                      return LoginScreen();
+                                    })
                                   );
                                 },
                                 child: Text(
-                                  "Create New Account?",
+                                  "Please! Login",
                                   style : TextStyle(
                                     color: Colors.blue,
                                     fontSize: 16,
@@ -168,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: MediaQuery.of(context).size.width * 0.5,
                                 child: OutlinedButton(
                                   child: Text(
-                                    "Login",
+                                    "Register",
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 21,
