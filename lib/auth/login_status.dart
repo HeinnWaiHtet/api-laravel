@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
 
 class LoginStatus extends ChangeNotifier{
-  bool status = false; // Login Status
+  bool status = true; // Login Status
 }
